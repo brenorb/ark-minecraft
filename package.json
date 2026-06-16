@@ -1,0 +1,33 @@
+{
+  "name": "ark-minecraft",
+  "version": "0.1.0",
+  "description": "Generate Ark-compatible QR map files for Minecraft.",
+  "type": "module",
+  "bin": {
+    "ark-minecraft": "./dist/src/cli.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "test": "npm run build && node --test dist/tests/*.test.js"
+  },
+  "keywords": [
+    "ark",
+    "arkade",
+    "bark",
+    "bitcoin",
+    "minecraft",
+    "qrcode"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "bech32": "^2.0.0",
+    "nbt-ts": "^1.3.6",
+    "qrcode": "^1.5.4"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.0",
+    "@types/qrcode": "^1.5.5",
+    "typescript": "^5.8.3"
+  }
+}
