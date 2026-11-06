@@ -17,7 +17,7 @@ Optional:
   --amount-sats <integer>  Amount in satoshis
   --lightning <invoice>    Lightning invoice or LNURL
   --onchain <address>      Optional on-chain fallback address
-  --data-version <int>     Minecraft DataVersion, default 2711
+  --data-version <int>     Non-negative 32-bit Minecraft DataVersion, default 2711
   --out-dir <path>         Output directory, default out
   --target-selector <sel>  Give command target, default @p
   --help                   Show this text
@@ -51,12 +51,13 @@ async function main() {
     return;
   }
 
+  const dataVersion = values['data-version']?.trim();
   const result = await writeMapBundle({
     arkAddress: values.ark,
     amountSats: values['amount-sats'] ? Number(values['amount-sats']) : undefined,
     lightning: values.lightning,
     onchainAddress: values.onchain,
-    dataVersion: values['data-version'] ? Number(values['data-version']) : undefined,
+    dataVersion: dataVersion === undefined ? undefined : Number(dataVersion || NaN),
     mapId: Number(values['map-id']),
     outDir: values['out-dir'] ?? 'out',
     targetSelector: values['target-selector'] ?? '@p',

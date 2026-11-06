@@ -63,6 +63,9 @@ export function encodeMapDat(colors: Int8Array, dataVersion = DEFAULT_MAP_DATA_V
   if (colors.length !== MAP_PIXEL_COUNT) {
     throw new Error(`Map color array must contain exactly ${MAP_PIXEL_COUNT} pixels`);
   }
+  if (!Number.isInteger(dataVersion) || dataVersion < 0 || dataVersion > 0x7fff_ffff) {
+    throw new Error('dataVersion must be a non-negative 32-bit integer');
+  }
 
   const nbt = encode('root', {
     data: {

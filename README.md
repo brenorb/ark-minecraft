@@ -52,7 +52,7 @@ Optional flags:
 
 - `--onchain bc1...`
 - `--lightning lnbc...`
-- `--data-version 2711`
+- `--data-version 2711` (non-negative 32-bit integer)
 - `--out-dir out`
 - `--target-selector @p`
 
